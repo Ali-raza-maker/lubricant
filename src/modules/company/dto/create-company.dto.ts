@@ -1,0 +1,21 @@
+import {
+  IsString,
+  IsNotEmpty,
+  MinLength,
+  MaxLength,
+  IsDate,
+  Length,
+} from 'class-validator';
+
+export class CreateCompanyDTO {
+  @IsString({ message: 'Title must be string' })
+  @IsNotEmpty({ message: 'Title is missing' })
+  @Length(3, 255)
+  title: string;
+  @IsString({ message: 'Title must be string' })
+  @IsNotEmpty({ message: 'description is missing' })
+  @Length(3)
+  description: string;
+  @IsNotEmpty({ message: 'start date is missing' })
+  date: string;
+}
