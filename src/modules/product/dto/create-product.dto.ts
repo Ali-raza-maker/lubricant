@@ -2,6 +2,7 @@ import {
   IsString,
   IsNotEmpty,
   Length,
+  IsNumber,
 } from 'class-validator';
 
 export class CreateProductDTO {
@@ -10,7 +11,6 @@ export class CreateProductDTO {
   title: string;
 
   @IsString({ message: 'Category must be string' })
-  @Length(3)
   category: string;
 
   @IsNotEmpty({ message: 'Quantity is missing' })
@@ -22,11 +22,11 @@ export class CreateProductDTO {
   @IsNotEmpty({ message: 'Discount is missing' })
   IsFixedDiscount: string;
 
-  @IsString({ message: 'Invalid discount persentage' })
+  @IsNumber()
   fixedDiscount: number;
 
   @IsNotEmpty({ message: 'Carton price is missing' })
-  cartonPrice: string;
+  cartonPrice: number;
 
   @IsNotEmpty({ message: 'unit price is missing' })
   unitPrice: number;
