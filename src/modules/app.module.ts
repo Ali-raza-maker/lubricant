@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { ClientModule } from './client/client.module';
 import { ExpenseModule } from './expense/expense.module';
 import { ProductModule } from './product/product.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { CashInvoiceModule } from './cashInvoice/cash-invoice.module';
 
 // Test Code Build
 @Module({
@@ -18,7 +20,9 @@ import { ProductModule } from './product/product.module';
     UserModule,
     ClientModule,
     ExpenseModule,
-    ProductModule
+    ProductModule,
+    InvoiceModule,
+    CashInvoiceModule
   ],
   controllers: [],
   providers: [],

@@ -22,5 +22,5 @@ export class CreateClientDTO {
   address: string;
 
   @IsNotEmpty({ message: 'end date is missing' })
-  shopname: string;
+  shopName: string;
 }

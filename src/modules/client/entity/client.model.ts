@@ -9,7 +9,7 @@ export class Client {
   name: string;
 
   @Prop()
-  number: number;
+  number: string;
 
   @Prop()
   address: string;
