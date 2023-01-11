@@ -26,7 +26,7 @@ export class ProductService {
      if (data.IsFixedDiscount === 'Fixed') {
        Product.discountFixed = data.fixedDiscount;
      } else {
-       Product.discountPersentage = process.env.discountPersentage;
+       Product.discountPersentage = "17%";
      }
     await  Product.save();
     return Product;
@@ -59,7 +59,7 @@ export class ProductService {
      if (data.IsFixedDiscount === 'Fixed') {
        Product.discountFixed = data.fixedDiscount;
      } else {
-       Product.discountPersentage = process.env.discountPersentage;
+       Product.discountPersentage = "17%";
      }
        
   }
