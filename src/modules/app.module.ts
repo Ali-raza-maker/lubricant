@@ -22,7 +22,7 @@ import { CashInvoiceModule } from './cashInvoice/cash-invoice.module';
     ExpenseModule,
     ProductModule,
     InvoiceModule,
-    CashInvoiceModule
+    CashInvoiceModule,
   ],
   controllers: [],
   providers: [],

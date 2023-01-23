@@ -16,6 +16,9 @@ export class Client {
 
   @Prop()
   shopName: string;
+
+  @Prop()
+  receivable?: number;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);

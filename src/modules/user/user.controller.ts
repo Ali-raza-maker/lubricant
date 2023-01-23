@@ -25,9 +25,14 @@ export class UserController {
   }
 
   @Post('login')
-  getSingle(@Body() createRequest: CreateUserDTO) {
-    return this.todoService.getSingle(createRequest);
+  signinLocal(@Body() dto: CreateUserDTO) {
+    return this.todoService.signinLocal(dto);
   }
+
+  // @Post('login')
+  // getSingle(@Body() createRequest: CreateUserDTO) {
+  //   return this.todoService.getSingle(createRequest);
+  // }
 
   //   @Get('allTask')
   //   getAll() {

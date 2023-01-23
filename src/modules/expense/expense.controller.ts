@@ -11,10 +11,12 @@ import {
   ValidationPipe,
   Patch,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
 import { CreateExpenseDTO } from './dto/create-expense.dto';
 // import { UpdateTaskDTO } from './dto/update-task.dto';
 import { ExpenseService } from './expense.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('todo')
 export class TaskController {
   constructor(private readonly todoService: ExpenseService) {}

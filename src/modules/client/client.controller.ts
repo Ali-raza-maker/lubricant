@@ -13,7 +13,9 @@ import {
 } from '@nestjs/common';
 import { CreateClientDTO } from './dto/create-client.dto';
 import { ClientService } from './client.service';
+import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('client')
 export class ClientController {
   constructor(private readonly todoService: ClientService) {}

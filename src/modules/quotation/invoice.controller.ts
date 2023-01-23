@@ -11,10 +11,12 @@ import {
   ValidationPipe,
   Patch,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
 import { CreateQuotationDTO } from './dto/create-quotation.dto';
 // import { UpdateTaskDTO } from './dto/update-task.dto';
 import { QuotationService } from './invoice.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('invoice')
 export class QuotationController {
   constructor(private readonly invoiceService: QuotationService) {}
@@ -23,5 +25,4 @@ export class QuotationController {
   createInvoive(@Body() createInvoiceRequest: CreateQuotationDTO) {
     return this.invoiceService.create(createInvoiceRequest);
   }
-  
 }

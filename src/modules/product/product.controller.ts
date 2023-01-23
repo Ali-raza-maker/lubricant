@@ -8,11 +8,14 @@ import {
   UsePipes,
   ValidationPipe,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
 import { CreateProductDTO } from './dto/create-product.dto';
 import { UpdateProductDTO } from './dto/update-product.dto';
 import { ProductService } from './product.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('product')
 export class ProductController {
   constructor(private readonly todoService: ProductService) {}
@@ -27,7 +30,7 @@ export class ProductController {
   getAll() {
     return this.todoService.getAll();
   }
-  
+
   @Get('/:_id')
   getSingle(@Param() _id: string) {
     return this.todoService.getSingle(_id);

@@ -23,4 +23,7 @@ export class CreateClientDTO {
 
   @IsNotEmpty({ message: 'end date is missing' })
   shopName: string;
+
+  @IsString({ message: 'Receivable must be string' })
+  receivable?: number;
 }
