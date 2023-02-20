@@ -5,7 +5,6 @@ import {
   Body,
   Param,
   Delete,
-  Put,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -38,6 +37,7 @@ export class TaskController {
   }
 
   @Patch('/:_id')
+  @UsePipes(ValidationPipe)
   update(@Param() _id: string, @Body() updateRequest: UpdateTaskDTO) {
     return this.todoService.update(_id, updateRequest);
   }

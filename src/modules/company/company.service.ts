@@ -39,6 +39,13 @@ export class CompanyService {
   }
 
   async update(_id: string, data: CreateCompanyDTO) {
+    
+    const company =  await this.getSingle(_id);
+    if(!company)
+      return {
+        message:"Company don't exist!",
+        code:404
+      }
     return this.todoModel.updateOne(
       { _id },
       {

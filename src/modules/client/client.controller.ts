@@ -5,7 +5,6 @@ import {
   Body,
   Param,
   Delete,
-  Put,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -37,6 +36,7 @@ export class ClientController {
   }
 
   @Patch('/:_id')
+  @UsePipes(ValidationPipe)
   update(@Param() _id: string, @Body() updateRequest: CreateClientDTO) {
     return this.todoService.update(_id, updateRequest);
   }

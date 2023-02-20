@@ -1,15 +1,9 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Param,
-  Delete,
-  Put,
-  UseGuards,
   UsePipes,
   ValidationPipe,
-  Patch,
 } from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UserService } from './user.service';
@@ -25,6 +19,7 @@ export class UserController {
   }
 
   @Post('login')
+  @UsePipes(ValidationPipe)
   signinLocal(@Body() dto: CreateUserDTO) {
     return this.todoService.signinLocal(dto);
   }

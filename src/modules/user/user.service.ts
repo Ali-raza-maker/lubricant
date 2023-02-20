@@ -14,6 +14,12 @@ export class UserService {
   ) {}
 
   async create(data: CreateUserDTO) {
+    const user = await this.todoModel.find({email:data.email})
+    if(user) 
+        return {
+          message:"User already exist!",
+          code:400
+        }
     const User = await this.todoModel.create({
       email: data.email,
       password: data.password,
@@ -41,17 +47,12 @@ export class UserService {
 
     return this.signUser(user.id, user.email, 'user');
   }
-
   async signUser(userId: number, email: string, type: string) {
-    console.log('userId', userId);
-    console.log('email', email);
-    const token = await this.jwtService.sign({
+    return this.jwtService.sign({
       sub: userId,
       email,
       type: type,
     });
-    console.log('token', token);
-    return token;
   }
   //   async getAll() {
   //     return this.todoModel.find();

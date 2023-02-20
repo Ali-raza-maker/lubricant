@@ -15,4 +15,4 @@ import { CompanyService } from './company.service';
   controllers: [CompanyController],
   providers: [CompanyService],
 })
-export class TodoModule {}
+export class CompanyModule {}

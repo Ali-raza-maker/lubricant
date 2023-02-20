@@ -8,6 +8,8 @@ import { ExpenseModule } from './expense/expense.module';
 import { ProductModule } from './product/product.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { CashInvoiceModule } from './cashInvoice/cash-invoice.module';
+import { Company } from './company/entity/company.model';
+import { CompanyModule } from './company/company.module';
 
 // Test Code Build
 @Module({
@@ -23,6 +25,7 @@ import { CashInvoiceModule } from './cashInvoice/cash-invoice.module';
     ProductModule,
     InvoiceModule,
     CashInvoiceModule,
+    CompanyModule
   ],
   controllers: [],
   providers: [],

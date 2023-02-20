@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateProductDTO } from './dto/create-product.dto';
@@ -23,12 +23,14 @@ export class ProductService {
       cartonPrice: data.cartonPrice,
       unitPrice: data.unitPrice,
     });
+     console.log('sbjcskc', Product);
      if (data.IsFixedDiscount === 'Fixed') {
        Product.discountFixed = data.fixedDiscount;
      } else {
        Product.discountPersentage = "17%";
      }
     await  Product.save();
+    console.log('sbjcskc', Product);
     return Product;
   }
 
@@ -50,11 +52,16 @@ export class ProductService {
 
   async update(_id: string, data: UpdateProductDTO) {
     const Product = await this.getSingle(_id);
+    if(!Product) 
+        return {
+          message:"Product not fount!",
+          Code:404
+        }
       Product.title = data.title;
       Product.category = data.category;
       Product.quantity = data.quantity;
       Product.company = data.company;
-      Product.cartonPrice = parseInt(data.cartonPrice);
+      Product.cartonPrice = data.cartonPrice;
       Product.unitPrice = data.unitPrice;
      if (data.IsFixedDiscount === 'Fixed') {
        Product.discountFixed = data.fixedDiscount;
@@ -62,5 +69,10 @@ export class ProductService {
        Product.discountPersentage = "17%";
      }
        
+     await Product.save();
+     return {
+      message:"Update Successfully!",
+      code:200
+     }
   }
 }

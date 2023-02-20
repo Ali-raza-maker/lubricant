@@ -37,6 +37,7 @@ export class ProductController {
   }
 
   @Patch('/:_id')
+  @UsePipes(ValidationPipe)
   update(@Param() _id: string, @Body() updateRequest: UpdateProductDTO) {
     return this.todoService.update(_id, updateRequest);
   }
