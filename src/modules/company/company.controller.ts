@@ -26,14 +26,14 @@ export class CompanyController {
     return this.todoService.create(createRequest);
   }
 
-  @Get('/:_id')
-  getSingle(@Param() _id: string) {
-    return this.todoService.getSingle(_id);
-  }
-
   @Get('all')
   getAll() {
     return this.todoService.getAll();
+  }
+
+  @Get('/:_id')
+  getSingle(@Param() _id: string) {
+    return this.todoService.getSingle(_id);
   }
 
   @Patch('/:_id')
@@ -42,13 +42,13 @@ export class CompanyController {
     return this.todoService.update(_id, updateRequest);
   }
 
-  @Delete('deleteSingle/:_id')
+  @Delete('/:_id')
   deleteSingle(@Param() _id: string) {
     return this.todoService.deleteSingle(_id);
   }
 
-  @Delete('deleteAll')
-  deleteAll() {
-    return this.todoService.deleteAll();
-  }
+  // @Delete('deleteAll')
+  // deleteAll() {
+  //   return this.todoService.deleteAll();
+  // }
 }

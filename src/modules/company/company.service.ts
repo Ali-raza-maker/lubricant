@@ -13,12 +13,10 @@ export class CompanyService {
   ) {}
 
   async create(data: CreateCompanyDTO) {
-    console.log("cgvcgjkac" , data)
     const Todo = await this.todoModel.create({
       title: data.title,
       description: data.description,
     });
-      console.log('Todo', Todo) ;
     Todo.date = new Date();
     await Todo.save();
     return Todo;
