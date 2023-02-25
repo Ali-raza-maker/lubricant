@@ -12,10 +12,10 @@ export class CreateCompanyDTO {
   @IsNotEmpty({ message: 'Title is missing' })
   @Length(3, 255)
   title: string;
+
   @IsString({ message: 'Description must be string' })
-  @IsNotEmpty({ message: 'Sescription is missing' })
+  @IsNotEmpty({ message: 'Description is missing' })
   @Length(3)
   description: string;
-  @IsNotEmpty({ message: 'Start Date is missing' })
-  date: string;
+
 }
