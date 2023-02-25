@@ -42,13 +42,13 @@ export class ProductController {
     return this.todoService.update(_id, updateRequest);
   }
 
-  @Delete('deleteSingle/:_id')
+  @Delete('/:_id')
   deleteSingle(@Param() _id: string) {
     return this.todoService.deleteSingle(_id);
   }
 
-  @Delete('deleteAll')
-  deleteAll() {
-    return this.todoService.deleteAll();
-  }
+  // @Delete('deleteAll')
+  // deleteAll() {
+  //   return this.todoService.deleteAll();
+  // }
 }
