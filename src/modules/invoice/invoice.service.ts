@@ -13,7 +13,6 @@ export class InvoiceService {
   ) {}
 
  async create(data: any){
-    console.log("Invoice data: -------" , data)
     const invoice = await this.invoiceModel.create(data);
     invoice.items = data.items;
     await invoice.save();

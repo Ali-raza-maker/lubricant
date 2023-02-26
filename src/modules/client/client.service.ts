@@ -12,6 +12,7 @@ export class ClientService {
   ) {}
 
   async create(data: CreateClientDTO) {
+    console.log("nmcbacak" , data)
     return await this.clientModel.create(data);
   }
 
@@ -27,9 +28,6 @@ export class ClientService {
     return this.clientModel.deleteOne({ _id });
   }
 
-  async deleteAll() {
-    return this.clientModel.deleteMany();
-  }
 
   async update(_id: string, data: CreateClientDTO) {
     return this.clientModel.updateOne(

@@ -5,6 +5,7 @@ import {
   MaxLength,
   IsDate,
   Length,
+  IsNumber,
 } from 'class-validator';
 
 export class CreateClientDTO {
@@ -24,6 +25,6 @@ export class CreateClientDTO {
   @IsNotEmpty({ message: 'end date is missing' })
   shopName: string;
 
-  @IsString({ message: 'Receivable must be string' })
-  receivable?: number;
+  @IsNotEmpty({ message: 'reciveable is missing' })
+  receivable: number;
 }

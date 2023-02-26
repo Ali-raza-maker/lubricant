@@ -40,7 +40,6 @@ export class UserService {
       email: dto.email,
       password: dto.password,
     });
-    console.log(user, 'hgtfufii');
     if (!user) throw new UnauthorizedException('Credentials incorrect');
     if (user.password !== dto.password)
       throw new UnauthorizedException('Credentials incorrect');

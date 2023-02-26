@@ -23,14 +23,12 @@ export class ProductService {
       cartonPrice: data.cartonPrice,
       unitPrice: data.unitPrice,
     });
-     console.log('sbjcskc', Product);
      if (data.IsFixedDiscount === 'Fixed') {
        Product.discountFixed = data.fixedDiscount;
      } else {
        Product.discountPersentage = "17%";
      }
     await  Product.save();
-    console.log('sbjcskc', Product);
     return Product;
   }
 
