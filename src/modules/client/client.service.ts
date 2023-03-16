@@ -30,11 +30,12 @@ export class ClientService {
 
 
   async update(_id: string, data: CreateClientDTO) {
-    return this.clientModel.updateOne(
+    return this.clientModel.findOneAndUpdate(
       { _id },
       {
         ...data,
       },
+      { returnDocument: 'after' },
     );
   }
 }

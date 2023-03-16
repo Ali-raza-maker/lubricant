@@ -40,11 +40,12 @@ export class TaskService {
   }
 
   async update(_id: string, data: UpdateTaskDTO) {
-    return this.todoModel.updateOne(
+    return this.todoModel.findOneAndUpdate(
       { _id },
       {
         ...data,
       },
+      { returnDocument: 'after' },
     );
   }
 }

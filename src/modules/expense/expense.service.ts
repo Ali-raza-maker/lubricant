@@ -40,11 +40,12 @@ export class ExpenseService {
   }
 
   async update(_id: string, data: CreateExpenseDTO) {
-    return this.todoModel.updateOne(
+    return this.todoModel.findOneAndUpdate(
       { _id },
       {
         ...data,
       },
+      { returnDocument: 'after' },
     );
   }
 }

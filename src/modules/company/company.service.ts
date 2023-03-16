@@ -13,6 +13,7 @@ export class CompanyService {
   ) {}
 
   async create(data: CreateCompanyDTO) {
+
     const Todo = await this.todoModel.create({
       title: data.title,
       description: data.description,
@@ -46,11 +47,16 @@ export class CompanyService {
         message:"Company don't exist!",
         code:404
       }
-    return this.todoModel.updateOne(
+      // company.title = data.title;
+      // company.description = data.description;
+      // await company.save();
+      // return company;
+    return this.todoModel.findOneAndUpdate(
       { _id },
       {
         ...data,
       },
+      { returnDocument: 'after' },
     );
   }
 }

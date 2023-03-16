@@ -5,7 +5,7 @@ export type CompanyDocument = Company & Document;
 
 @Schema()
 export class Company {
-  @Prop({unique: true})
+  @Prop()
   title: string;
 
   @Prop()
