@@ -9,38 +9,38 @@ import { Expense, ExpenseDocument } from './entity/expense.model';
 export class ExpenseService {
   constructor(
     @InjectModel(Expense.name)
-    private todoModel: Model<ExpenseDocument>,
+    private expenseModel: Model<ExpenseDocument>,
   ) {}
 
   async create(data: CreateExpenseDTO) {
-    const Todo = await this.todoModel.create({
-      heading: data.heading,
-      details: data.details,
+    const Expense = await this.expenseModel.create({
+      title: data.title,
+      description: data.description,
+      date: new Date(data.date),
       amount: data.amount,
     });
-    Todo.date = new Date(data.date);
-    await Todo.save();
-    return Todo;
+    await Expense.save();
+    return Expense;
   }
 
   async getSingle(_id: string) {
-    return this.todoModel.findById(_id);
+    return this.expenseModel.findById(_id);
   }
 
   async getAll() {
-    return this.todoModel.find();
+    return this.expenseModel.find();
   }
 
   async deleteSingle(_id: string) {
-    return this.todoModel.deleteOne({ _id });
+    return this.expenseModel.deleteOne({ _id });
   }
 
   async deleteAll() {
-    return this.todoModel.deleteMany();
+    return this.expenseModel.deleteMany();
   }
 
   async update(_id: string, data: CreateExpenseDTO) {
-    return this.todoModel.findOneAndUpdate(
+    return this.expenseModel.findOneAndUpdate(
       { _id },
       {
         ...data,

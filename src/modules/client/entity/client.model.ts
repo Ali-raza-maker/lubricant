@@ -9,13 +9,13 @@ export class Client {
   name: string;
 
   @Prop()
-  number: string;
+  phone: string;
 
   @Prop()
   address: string;
 
   @Prop()
-  shopName: string;
+  description: string;
 
   @Prop()
   receivable: number;

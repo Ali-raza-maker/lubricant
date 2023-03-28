@@ -9,17 +9,15 @@ import {
 
 export class UpdateTaskDTO {
   @IsString({ message: 'Title must be string' })
+  @IsNotEmpty({ message: 'Title is missing' })
   @Length(3, 255)
   title: string;
 
-  @IsString({ message: 'Title must be string' })
-  @IsNotEmpty({ message: 'description is missing' })
+  @IsString({ message: 'Description must be string' })
+  @IsNotEmpty({ message: 'Description is missing' })
   @Length(3)
   description: string;
 
-  @IsNotEmpty({ message: 'start date is missing' })
-  toDate: string;
-  
-  @IsNotEmpty({ message: 'end date is missing' })
-  fromDate: string;
+  @IsNotEmpty({ message: 'Date is missing' })
+  date: string;
 }

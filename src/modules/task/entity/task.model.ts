@@ -12,10 +12,7 @@ export class Task {
   description: string;
 
   @Prop()
-  toDate: Date;
-
-  @Prop()
-  fromDate: Date;
+  date: Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

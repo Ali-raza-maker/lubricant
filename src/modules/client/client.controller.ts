@@ -13,36 +13,42 @@ import {
 import { CreateClientDTO } from './dto/create-client.dto';
 import { ClientService } from './client.service';
 import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
+import { UpdateClientDTO } from './dto/update-client.dto';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('client')
 export class ClientController {
-  constructor(private readonly todoService: ClientService) {}
+  constructor(private readonly clientService: ClientService) {}
 
   @Post()
   @UsePipes(ValidationPipe)
   create(@Body() createRequest: CreateClientDTO) {
-    return this.todoService.create(createRequest);
+    return this.clientService.create(createRequest);
   }
 
   @Get('all')
   getAll() {
-    return this.todoService.getAll();
+    return this.clientService.getAll();
   } 
   
   @Get('/:_id')
   getSingle(@Param() _id: string) {
-    return this.todoService.getSingle(_id);
+    return this.clientService.getSingle(_id);
   }
 
   @Patch('/:_id')
   @UsePipes(ValidationPipe)
-  update(@Param() _id: string, @Body() updateRequest: CreateClientDTO) {
-    return this.todoService.update(_id, updateRequest);
+  update(@Param() _id: string, @Body() updateRequest: UpdateClientDTO) {
+    return this.clientService.update(_id, updateRequest);
   }
 
-  @Delete('/:_id')
+  @Delete('all')
+  deleteAll() {
+    return this.clientService.deleteAll();
+  }
+
+  @Delete('deleteSingle/:_id')
   deleteSingle(@Param() _id: string) {
-    return this.todoService.deleteSingle(_id);
+    return this.clientService.deleteSingle(_id);
   }
 }

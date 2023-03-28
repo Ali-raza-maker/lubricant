@@ -18,10 +18,10 @@ export class Product {
   company: string;
 
   @Prop()
-  discountFixed: number;
+  discountPrice: number;
 
   @Prop()
-  discountPersentage?: string;
+  discountType?: string;
 
   @Prop()
   cartonPrice: number;

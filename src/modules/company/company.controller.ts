@@ -15,7 +15,7 @@ import { CreateCompanyDTO } from './dto/create-company.dto';
 import { CompanyService } from './company.service';
 import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('company')
 export class CompanyController {
   constructor(private readonly todoService: CompanyService) {}

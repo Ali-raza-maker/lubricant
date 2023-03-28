@@ -22,10 +22,10 @@ export class UpdateProductDTO {
 
   @IsString({ message: 'Is Fixed Discount must be string' })
   @IsNotEmpty({ message: 'Discount date is missing' })
-  IsFixedDiscount: string;
+  discountType: string;
 
   @IsNotEmpty({ message: 'Invalid discount is missing' })
-  fixedDiscount: number;
+  discountPrice: number;
 
   @IsNotEmpty({ message: 'Carton price is missing' })
   cartonPrice: number;

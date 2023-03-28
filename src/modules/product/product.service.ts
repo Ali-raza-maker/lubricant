@@ -22,13 +22,10 @@ export class ProductService {
       company: data.company,
       cartonPrice: data.cartonPrice,
       unitPrice: data.unitPrice,
+      discountPrice: data.discountPrice,
+      discountType: data.discountType
     });
-     if (data.IsFixedDiscount === 'Fixed') {
-       Product.discountFixed = data.fixedDiscount;
-     } else {
-       Product.discountPersentage = "17%";
-     }
-    await  Product.save();
+    // await  Product.save();
     return Product;
   }
 
@@ -50,27 +47,23 @@ export class ProductService {
 
   async update(_id: string, data: UpdateProductDTO) {
     const Product = await this.getSingle(_id);
-    if(!Product) 
-        return {
-          message:"Product not fount!",
-          Code:404
-        }
-      Product.title = data.title;
-      Product.category = data.category;
-      Product.quantity = data.quantity;
-      Product.company = data.company;
-      Product.cartonPrice = data.cartonPrice;
-      Product.unitPrice = data.unitPrice;
-     if (data.IsFixedDiscount === 'Fixed') {
-       Product.discountFixed = data.fixedDiscount;
-     } else {
-       Product.discountPersentage = "17%";
-     }
-       
-     await Product.save();
-     return {
-      message:"Update Successfully!",
-      code:200
-     }
+    return this.productModel.findOneAndUpdate(
+      { _id },
+      {
+        ...data,
+      },
+      { returnDocument: 'after' },
+    );
+  }
+
+  async search(text: string){
+    console.log( "text: ", text )
+    return this.productModel.find({
+      // $or: [
+        // {
+          title: new RegExp(text, 'i')
+        // },
+      // ]
+    });
   }
 }

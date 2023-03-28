@@ -6,13 +6,13 @@ export type ExpenseDocument = Expense & Document;
 @Schema()
 export class Expense {
   @Prop()
-  heading: string;
+  title: string;
 
   @Prop()
-  details: string;
+  description: string;
 
   @Prop()
-  amount: Date;
+  amount: Number;
 
   @Prop()
   date: Date;

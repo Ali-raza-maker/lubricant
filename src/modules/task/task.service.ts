@@ -16,9 +16,8 @@ export class TaskService {
     const Todo = await this.todoModel.create({
       title: data.title,
       description: data.description,
+      date: new Date(data.date),
     });
-    Todo.toDate = new Date(data.toDate);
-    Todo.fromDate = new Date(data.fromDate);
     await Todo.save();
     return Todo;
   }

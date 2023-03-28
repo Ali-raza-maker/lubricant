@@ -15,40 +15,44 @@ import { CreateProductDTO } from './dto/create-product.dto';
 import { UpdateProductDTO } from './dto/update-product.dto';
 import { ProductService } from './product.service';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('product')
 export class ProductController {
-  constructor(private readonly todoService: ProductService) {}
+  constructor(private readonly productService: ProductService) {}
 
   @Post()
   @UsePipes(ValidationPipe)
   create(@Body() createRequest: CreateProductDTO) {
-    return this.todoService.create(createRequest);
+    return this.productService.create(createRequest);
   }
 
   @Get('all')
   getAll() {
-    return this.todoService.getAll();
+    return this.productService.getAll();
   }
 
   @Get('/:_id')
   getSingle(@Param() _id: string) {
-    return this.todoService.getSingle(_id);
+    return this.productService.getSingle(_id);
   }
 
   @Patch('/:_id')
   @UsePipes(ValidationPipe)
   update(@Param() _id: string, @Body() updateRequest: UpdateProductDTO) {
-    return this.todoService.update(_id, updateRequest);
+    return this.productService.update(_id, updateRequest);
   }
 
+  @Delete('deleteAll')
+  deleteAll() {
+    return this.productService.deleteAll();
+  }
   @Delete('/:_id')
   deleteSingle(@Param() _id: string) {
-    return this.todoService.deleteSingle(_id);
+    return this.productService.deleteSingle(_id);
   }
 
-  // @Delete('deleteAll')
-  // deleteAll() {
-  //   return this.todoService.deleteAll();
-  // }
+  @Get('/search/:text')
+  search(@Param() text: string) {
+    return this.productService.search(text);
+  }
 }

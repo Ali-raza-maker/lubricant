@@ -38,4 +38,9 @@ export class ClientService {
       { returnDocument: 'after' },
     );
   }
+
+  
+  async deleteAll() {
+    return this.clientModel.deleteMany();
+  }
 }

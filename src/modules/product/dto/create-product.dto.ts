@@ -20,10 +20,10 @@ export class CreateProductDTO {
   company: string;
 
   @IsNotEmpty({ message: 'Discount is missing' })
-  IsFixedDiscount: string;
+  discountType: string;
 
   @IsNumber()
-  fixedDiscount: number;
+  discountPrice: number;
 
   @IsNotEmpty({ message: 'Carton price is missing' })
   cartonPrice: number;
