@@ -8,15 +8,17 @@ import { ExpenseModule } from './expense/expense.module';
 import { ProductModule } from './product/product.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { CashInvoiceModule } from './cashInvoice/cash-invoice.module';
-import { Company } from './company/entity/company.model';
 import { CompanyModule } from './company/company.module';
+import { StockModule } from './stocks/stock.module';
+import { PriceListModule } from './price/price.module';
+
 
 // Test Code Build
 @Module({
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
-      'mongodb+srv://ali:ali@cluster0.kznlky8.mongodb.net/User?retryWrites=true&w=majority',
+      'mongodb+srv://user:user@cluster0.9xmshku.mongodb.net/?retryWrites=true&w=majority',
     ),
     TodoModule,
     UserModule,
@@ -25,7 +27,9 @@ import { CompanyModule } from './company/company.module';
     ProductModule,
     InvoiceModule,
     CashInvoiceModule,
-    CompanyModule
+    CompanyModule,
+    StockModule,
+    PriceListModule
   ],
   controllers: [],
   providers: [],

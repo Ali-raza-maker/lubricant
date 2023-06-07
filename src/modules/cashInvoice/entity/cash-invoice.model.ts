@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, now } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { Client } from 'src/modules/client/entity/client.model';
 import { Type } from 'class-transformer';
@@ -51,6 +51,12 @@ export class CashInvoice {
 
   @Prop()
   address: string;
+
+  @Prop({default: now()})
+    createdAt: Date;
+
+    @Prop({default: now()})
+    updatedAt: Date;
 }
 
 export const CashInvoiceSchema = SchemaFactory.createForClass(CashInvoice);

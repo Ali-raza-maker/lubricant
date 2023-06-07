@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, now } from 'mongoose';
 
 export type ExpenseDocument = Expense & Document;
 
@@ -16,6 +16,12 @@ export class Expense {
 
   @Prop()
   date: Date;
+
+  @Prop({default: now()})
+    createdAt: Date;
+
+    @Prop({default: now()})
+    updatedAt: Date;
 }
 
 export const ExpenseSchema = SchemaFactory.createForClass(Expense);

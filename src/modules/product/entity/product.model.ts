@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, now } from 'mongoose';
+import * as mongoose from 'mongoose';
+import { Stock } from 'src/modules/stocks/entity/stock.model';
 
 export type ProductDocument = Product & Document;
 
@@ -28,5 +30,17 @@ export class Product {
 
   @Prop()
   unitPrice: number;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Stock.name })
+  stock: Stock;
+  
+  @Prop()
+  CreatedAt: Date;
+
+  @Prop()
+  UpdatedAt?: Date;
+
+  @Prop({ default: false })
+  deleted?: Boolean;
 }
 export const ProductSchema = SchemaFactory.createForClass(Product);

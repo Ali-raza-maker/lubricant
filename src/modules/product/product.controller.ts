@@ -4,6 +4,7 @@ import {
   Post,
   Body,
   Param,
+  Query,
   Delete,
   UsePipes,
   ValidationPipe,
@@ -11,7 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../utils/guards/jwt-guard.guard';
-import { CreateProductDTO } from './dto/create-product.dto';
+import { CreateProductDTO, GetProductDTO } from './dto/create-product.dto';
 import { UpdateProductDTO } from './dto/update-product.dto';
 import { ProductService } from './product.service';
 
@@ -27,8 +28,9 @@ export class ProductController {
   }
 
   @Get('all')
-  getAll() {
-    return this.productService.getAll();
+  getAll(@Query() query: GetProductDTO) {
+    console.log( "query: ", query )
+    return this.productService.getAll(query);
   }
 
   @Get('/:_id')
@@ -51,8 +53,8 @@ export class ProductController {
     return this.productService.deleteSingle(_id);
   }
 
-  @Get('/search/:text')
-  search(@Param() text: string) {
-    return this.productService.search(text);
+  @Get('search/:text')
+  search(@Param() param: { text: string }) {
+    return this.productService.search(param);
   }
 }

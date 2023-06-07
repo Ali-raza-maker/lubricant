@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, now } from 'mongoose';
 
 export type TaskDocument = Task & Document;
 
@@ -13,6 +13,12 @@ export class Task {
 
   @Prop()
   date: Date;
+
+  @Prop({default: now()})
+    createdAt: Date;
+
+    @Prop({default: now()})
+    updatedAt: Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
